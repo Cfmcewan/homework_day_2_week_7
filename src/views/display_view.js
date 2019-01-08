@@ -19,13 +19,21 @@ DisplayView.prototype.render = function(instrument){
   const inforInstrumentDescription = document.createElement('p');
   inforInstrumentDescription.textContent = `${instrument.description}`
 
+  const instrumentsHeading = this.createHeading(instrument);
   const instrumentList = this.createInfoList(instrument);
 
   instrumentDiv.innerHTML = '';
   instrumentDiv.appendChild(infoInstrumentName);
   instrumentDiv.appendChild(inforInstrumentDescription);
+  instrumentDiv.appendChild(instrumentsHeading);
   instrumentDiv.appendChild(instrumentList);
 };
+
+DisplayView.prototype.createHeading = function(instrument) {
+  const heading = document.createElement('h3');
+  heading.textContent = `Instruments for ${instrument.name}:`;
+  return heading;
+}
 
 DisplayView.prototype.createInfoList = function(instrument) {
   const infoList = document.createElement('ul');
